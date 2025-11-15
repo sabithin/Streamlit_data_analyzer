@@ -1,11 +1,12 @@
 import pandas as pd
 import streamlit as st  
+import numpy as np
 def show_column_selector():
     st.title("📌 Select Columns")
 
     if 'df' in st.session_state:
-        df = st.session_state.df
-
+        df = st.session_state.get('df_cleaned', st.session_state.df)
+        
         selected_cols = st.multiselect("Choose columns to display", options=df.columns.tolist())
 
         if selected_cols:

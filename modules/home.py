@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd 
+import numpy as np
 def show_home():
     st.title("📊 Data Analyzer")
     st.write("Welcome to your Streamlit Data Analyzer!")
