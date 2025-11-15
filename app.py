@@ -1,12 +1,19 @@
 import pandas as pd
+import numpy as np
 import streamlit as st
-st.title("📊Data Analyzer")
+from cleaning import clean_data
+from pages.home import show_home
+from pages.column_selector import show_column_selector
+from pages.cleaned_data import show_cleaning
 
-uploaded_file = st.file_uploader("Upload your CSV file here",type=["csv"])
 
-if uploaded_file:
-    df=pd.read_csv(uploaded_file)
-    st.success("File uploaded successfully!")
-    st.header("Preview of your data:")
-    st.dataframe(df.head())
-    st.caption("First 5 rows of the dataset")
+st.sidebar.title("🔍 Navigation")
+page = st.sidebar.radio("Go to", ["🏠Home", "🧹Clean", "📌Select Columns"])
+
+if page == "🏠Home":
+    show_home()
+elif page == "🧹Clean":
+    show_cleaning()
+elif page == "📌Select Columns":
+    show_column_selector()
+
